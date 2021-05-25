@@ -1,6 +1,6 @@
 import React from "react"
 import { Button, TextField, Grid, Container, Box } from "@material-ui/core"
-function RegisterForm({ handleChange, handleSubmit, values }) {
+function RegisterForm({ handleInput, handleSubmit, values }) {
 	const { username, password1, password2 } = values
 	return (
 		<Container>
@@ -10,7 +10,7 @@ function RegisterForm({ handleChange, handleSubmit, values }) {
 					<Grid item xs={12} md={7}>
 						<p>اكتب اسمك:</p>
 						<TextField
-							onChange={(e) => handleChange(e)}
+							onChange={(e) => handleInput(e)}
 							name="username"
 							value={username}
 							fullWidth
@@ -22,7 +22,7 @@ function RegisterForm({ handleChange, handleSubmit, values }) {
 					<Grid md={7} xs={12} item>
 						<p>اكتب كلمة المرور:</p>
 						<TextField
-							onChange={(e) => handleChange(e)}
+							onChange={(e) => handleInput(e)}
 							name="password1"
 							value={password1}
 							type="password"
@@ -35,7 +35,7 @@ function RegisterForm({ handleChange, handleSubmit, values }) {
 					<Grid md={7} xs={12} item>
 						<p>تأكيد كلمة المرور:</p>
 						<TextField
-							onChange={(e) => handleChange(e)}
+							onChange={(e) => handleInput(e)}
 							name="password2"
 							value={password2}
 							type="password"

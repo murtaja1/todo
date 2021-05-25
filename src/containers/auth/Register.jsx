@@ -9,7 +9,7 @@ function Register() {
 		password2: ""
 	})
 	const history = useHistory()
-	const handleChange = (e) => {
+	const handleInput = (e) => {
 		const name = e.target.name
 
 		setUser({
@@ -48,7 +48,7 @@ function Register() {
 	}
 	return (
 		<div>
-			<RegisterForm handleSubmit={handleSubmit} handleChange={handleChange} values={user} />
+			<RegisterForm handleSubmit={handleSubmit} handleInput={handleInput} values={user} />
 		</div>
 	)
 }
