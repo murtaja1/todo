@@ -1,28 +1,40 @@
 import React from "react"
 import { Button, TextField, Grid, Container, Box } from "@material-ui/core"
-function LoginForm() {
+function LoginForm({ handleInput, handleSubmit, values }) {
+	const { username, password } = values
 	return (
 		<Container>
 			<h1 align="center">تسجيل الدخول</h1>
-			<form>
+			<form onSubmit={handleSubmit}>
 				<Grid container direction="row" justify="center">
 					<Grid item xs={12} md={7}>
 						<p>اكتب اسمك:</p>
-						<TextField fullWidth id="outlined-basic" label="اكتب..." variant="outlined" />
+						<TextField
+							onChange={(e) => handleInput(e)}
+							value={username}
+							name="username"
+							fullWidth
+							label="اكتب..."
+							variant="outlined"
+							required
+						/>
 					</Grid>
 					<Grid md={7} xs={12} item>
 						<p>اكتب كلمة المرور:</p>
 						<TextField
+							name="password"
+							value={password}
+							onChange={(e) => handleInput(e)}
 							type="password"
 							fullWidth
-							id="outlined-basic"
 							label="اكتب..."
 							variant="outlined"
+							required
 						/>
 					</Grid>
 					<Grid item md={7} align="center">
 						<Box mt={1}>
-							<Button variant="contained" color="primary">
+							<Button variant="contained" type="submit" color="primary">
 								تسجيل الدخول
 							</Button>
 						</Box>
