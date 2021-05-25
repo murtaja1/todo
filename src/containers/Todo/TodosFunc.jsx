@@ -22,7 +22,7 @@ function TodosFunc() {
 				setTodos([])
 				for (let i in data) {
 					if (data[i].doneAt === null) {
-						setTodos([...todos, data[i]])
+						setTodos((prevItems) => [...prevItems, data[i]])
 					}
 				}
 			})

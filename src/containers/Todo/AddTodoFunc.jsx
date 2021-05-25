@@ -31,7 +31,6 @@ function AddTodoFunc() {
 		})
 	}
 	const handleSubmit = async (e) => {
-		console.log("done")
 		e.preventDefault()
 		try {
 			const promise = await fetch("https://fetest.morabaaapps.com/api/v1/todos", {
