@@ -11,6 +11,9 @@ function ViewTodo({ todo, checked, setChecked, handleDone }) {
 				<Grid item xs={12} md={7} className={classes.todos}>
 					<h3 align="center">{todo.title}</h3>
 					<p>{todo.body}</p>
+					<div align="center">
+						<img src={`https://fetest.morabaaapps.com${todo.image}`} alt="dd" width="50%" />
+					</div>
 					<FormControlLabel
 						control={
 							<Checkbox color="primary" checked={checked} onChange={() => setChecked(!checked)} />
