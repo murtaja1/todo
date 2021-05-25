@@ -6,11 +6,11 @@ import CircularProgress from "@material-ui/core/CircularProgress"
 
 function TodosFunc() {
 	const [userCredentials] = useContext(UserContext)
-	const [todos, setTodos] = useState()
+	const [todos, setTodos] = useState([])
 	const history = useHistory()
 
 	const fetchTodos = () => {
-		fetch("https://fetest.morabaaapps.com/api/v1/todos?filter=all", {
+		fetch("https://fetest.morabaaapps.com/api/v1/todos?filter=null", {
 			headers: {
 				"Content-Type": "application/json",
 				Authorization: userCredentials.token
@@ -18,7 +18,13 @@ function TodosFunc() {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				setTodos(data)
+				// to show only the current todos
+				for (let i in data) {
+					if (data[i].doneAt === null) {
+						setTodos([...todos, data[i]])
+						console.log(data[i])
+					}
+				}
 			})
 	}
 	useEffect(() => {
@@ -35,7 +41,6 @@ function TodosFunc() {
 				<Todos todos={todos} />
 			) : (
 				<div align="center">
-					{" "}
 					<CircularProgress />
 				</div>
 			)}
