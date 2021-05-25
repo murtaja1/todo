@@ -19,10 +19,10 @@ function TodosFunc() {
 			.then((res) => res.json())
 			.then((data) => {
 				// to show only the current todos
+				setTodos([])
 				for (let i in data) {
 					if (data[i].doneAt === null) {
 						setTodos([...todos, data[i]])
-						console.log(data[i])
 					}
 				}
 			})
@@ -30,8 +30,8 @@ function TodosFunc() {
 	useEffect(() => {
 		if (userCredentials.token === undefined) {
 			history.push("/login")
-		}
-		fetchTodos()
+		} else fetchTodos()
+
 		return fetchTodos()
 	}, [])
 

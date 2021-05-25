@@ -21,7 +21,6 @@ function AddTodoFunc() {
 		})
 	}
 	const handleFile = (e) => {
-		console.log(e.target.files[0])
 		const formData = new FormData()
 		formData.append("Image", e.target.files[0])
 		formData.append("Title", todo.title)
