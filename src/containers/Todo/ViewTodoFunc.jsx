@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useEffect } from "react"
 import ViewTodo from "../../components/Todo/ViewTodo"
 import { useParams } from "react-router-dom"
-import { UserContext } from "../../Context"
 import { useHistory } from "react-router-dom"
 import CircularProgress from "@material-ui/core/CircularProgress"
 
@@ -9,14 +8,13 @@ function ViewTodoFunc() {
 	const [todo, setTodo] = useState()
 	const [checked, setChecked] = useState(false)
 	const { id } = useParams()
-	const [userCredentials] = useContext(UserContext)
 	const history = useHistory()
 
 	const fetchTodo = () => {
 		fetch(`https://fetest.morabaaapps.com/api/v1/todos/${id}`, {
 			headers: {
 				"Content-Type": "application/json",
-				Authorization: userCredentials.token
+				Authorization: localStorage.token
 			}
 		})
 			.then((res) => res.json())
@@ -25,10 +23,10 @@ function ViewTodoFunc() {
 			})
 	}
 	useEffect(() => {
-		// to make the user login if not
-		if (userCredentials.token === undefined) {
+		if (localStorage.token === undefined) {
 			history.push("/login")
-		} else fetchTodo()
+		}
+		fetchTodo()
 		return () => setTodo("")
 	}, [])
 	const handleDone = async () => {
@@ -37,7 +35,7 @@ function ViewTodoFunc() {
 				method: "PATCH",
 				headers: {
 					"Content-Type": "application/json",
-					Authorization: userCredentials.token
+					Authorization: localStorage.token
 				},
 				body: JSON.stringify({
 					done: checked

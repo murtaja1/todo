@@ -1,13 +1,11 @@
-import React, { useState, useContext } from "react"
+import React, { useState } from "react"
 import LoginForm from "../../components/Auth/LoginForm"
 import { useHistory } from "react-router-dom"
-import { UserContext } from "../../Context"
 function Login() {
 	const [user, setUser] = useState({
 		username: "",
 		password: ""
 	})
-	const [, setUserCredentials] = useContext(UserContext)
 	const history = useHistory()
 	const handleInput = (e) => {
 		const name = e.target.name
@@ -34,7 +32,7 @@ function Login() {
 				alert("اسم المستخدم او كلمة المرور غير صحيحة!")
 			} else {
 				const res = await promise.json()
-				setUserCredentials(res)
+				localStorage.setItem("token", res.token)
 				setUser({
 					username: "",
 					password: ""

@@ -1,19 +1,22 @@
-import React, { useContext, useEffect, useState } from "react"
-import { UserContext } from "../../Context"
+import React, { useEffect, useState } from "react"
 import Todos from "../../components/Todo/Todos"
-import { useHistory } from "react-router-dom"
 import CircularProgress from "@material-ui/core/CircularProgress"
+import { useHistory } from "react-router-dom"
+import { Button } from "@material-ui/core"
 
 function TodosFunc() {
-	const [userCredentials] = useContext(UserContext)
 	const [todos, setTodos] = useState([])
 	const history = useHistory()
 
+	const logout = () => {
+		history.push("/login")
+		localStorage.clear()
+	}
 	const fetchTodos = () => {
 		fetch("https://fetest.morabaaapps.com/api/v1/todos?filter=null", {
 			headers: {
 				"Content-Type": "application/json",
-				Authorization: userCredentials.token
+				Authorization: localStorage.token
 			}
 		})
 			.then((res) => res.json())
@@ -28,15 +31,18 @@ function TodosFunc() {
 			})
 	}
 	useEffect(() => {
-		if (userCredentials.token === undefined) {
+		if (localStorage.token === undefined) {
 			history.push("/login")
-		} else fetchTodos()
+		}
+		fetchTodos()
 
 		return () => setTodos([])
 	}, [])
 
 	return (
 		<div>
+			{localStorage.token && <Button onClick={logout}>تسجيل الخروج</Button>}
+
 			{todos ? (
 				<Todos todos={todos} />
 			) : (

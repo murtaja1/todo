@@ -1,10 +1,8 @@
-import React, { useState, useContext, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import AddTodo from "../../components/Todo/AddTodo"
-import { UserContext } from "../../Context"
 import { useHistory } from "react-router-dom"
 
 function AddTodoFunc() {
-	const [userCredentials] = useContext(UserContext)
 	const history = useHistory()
 
 	const [todo, setTodo] = useState({
@@ -36,7 +34,7 @@ function AddTodoFunc() {
 			const promise = await fetch("https://fetest.morabaaapps.com/api/v1/todos", {
 				method: "POST",
 				headers: {
-					Authorization: userCredentials.token
+					Authorization: localStorage.token
 				},
 				body: todo.binary
 			})
@@ -55,7 +53,7 @@ function AddTodoFunc() {
 		}
 	}
 	useEffect(() => {
-		if (userCredentials.token === undefined) {
+		if (localStorage.token === undefined) {
 			history.push("/login")
 		}
 	}, [])
