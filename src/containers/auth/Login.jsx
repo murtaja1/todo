@@ -35,7 +35,7 @@ function Login() {
 			} else {
 				const res = await promise.json()
 				setUserCredentials(res)
-				history.push("/addTodo")
+				history.push("/")
 				setUser({
 					username: "",
 					password: ""
