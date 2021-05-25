@@ -10,7 +10,7 @@ function AddTodoFunc() {
 	const [todo, setTodo] = useState({
 		title: "",
 		body: "",
-		image: ""
+		binary: ""
 	})
 	const handleInput = (e) => {
 		const name = e.target.name
@@ -27,7 +27,7 @@ function AddTodoFunc() {
 		formData.append("Body", todo.body)
 		setTodo({
 			...todo,
-			image: formData
+			binary: formData
 		})
 	}
 	const handleSubmit = async (e) => {
@@ -38,7 +38,7 @@ function AddTodoFunc() {
 				headers: {
 					Authorization: userCredentials.token
 				},
-				body: todo.image
+				body: todo.binary
 			})
 			if (promise.status === 400) {
 				alert("اسم المستخدم او كلمة المرور غير صحيحة!")
