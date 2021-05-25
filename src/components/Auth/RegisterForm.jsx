@@ -14,9 +14,9 @@ function RegisterForm({ handleChange, handleSubmit, values }) {
 							name="username"
 							value={username}
 							fullWidth
-							id="outlined-basic"
 							label="اكتب..."
 							variant="outlined"
+							required
 						/>
 					</Grid>
 					<Grid md={7} xs={12} item>
@@ -27,9 +27,9 @@ function RegisterForm({ handleChange, handleSubmit, values }) {
 							value={password1}
 							type="password"
 							fullWidth
-							id="outlined-basic"
 							label="اكتب..."
 							variant="outlined"
+							required
 						/>
 					</Grid>
 					<Grid md={7} xs={12} item>
@@ -40,9 +40,9 @@ function RegisterForm({ handleChange, handleSubmit, values }) {
 							value={password2}
 							type="password"
 							fullWidth
-							id="outlined-basic"
 							label="اكتب..."
 							variant="outlined"
+							required
 						/>
 					</Grid>
 					<Grid item md={7} align="center">
