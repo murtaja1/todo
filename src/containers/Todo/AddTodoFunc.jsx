@@ -44,8 +44,6 @@ function AddTodoFunc() {
 			if (promise.status === 400) {
 				alert("اسم المستخدم او كلمة المرور غير صحيحة!")
 			} else {
-				const res = await promise.json()
-				console.log(res)
 				setTodo({
 					title: "",
 					body: "",

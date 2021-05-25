@@ -1,5 +1,7 @@
 import React from "react"
 import { Button, TextField, Grid, Container, Box } from "@material-ui/core"
+import { Link } from "react-router-dom"
+
 function RegisterForm({ handleInput, handleSubmit, values }) {
 	const { username, password1, password2 } = values
 	return (
@@ -50,6 +52,9 @@ function RegisterForm({ handleInput, handleSubmit, values }) {
 							<Button variant="contained" type="submit" color="primary">
 								انشاء حساب
 							</Button>
+						</Box>
+						<Box mt={1}>
+							تملك حساب مسبقا؟ <Link to="/login">تسجيل الدخول</Link>
 						</Box>
 					</Grid>
 				</Grid>

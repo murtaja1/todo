@@ -1,5 +1,6 @@
 import React from "react"
 import { Button, TextField, Grid, Container, Box } from "@material-ui/core"
+import { Link } from "react-router-dom"
 function LoginForm({ handleInput, handleSubmit, values }) {
 	const { username, password } = values
 	return (
@@ -37,6 +38,9 @@ function LoginForm({ handleInput, handleSubmit, values }) {
 							<Button variant="contained" type="submit" color="primary">
 								تسجيل الدخول
 							</Button>
+						</Box>
+						<Box mt={1}>
+							لا تملك حساب؟ <Link to="/register">انشاء حساب</Link>
 						</Box>
 					</Grid>
 				</Grid>
