@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import AddTodo from "../../components/Todo/AddTodo"
 import { UserContext } from "../../Context"
 import { useHistory } from "react-router-dom"
@@ -46,17 +46,22 @@ function AddTodoFunc() {
 			} else {
 				const res = await promise.json()
 				console.log(res)
-				history.push("/")
 				setTodo({
 					title: "",
 					body: "",
 					image: ""
 				})
+				history.push("/")
 			}
 		} catch (err) {
 			console.log(err)
 		}
 	}
+	useEffect(() => {
+		if (userCredentials.token === undefined) {
+			history.push("/login")
+		}
+	}, [])
 	return (
 		<div>
 			<AddTodo

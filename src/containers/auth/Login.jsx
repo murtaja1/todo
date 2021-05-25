@@ -35,11 +35,11 @@ function Login() {
 			} else {
 				const res = await promise.json()
 				setUserCredentials(res)
-				history.push("/")
 				setUser({
 					username: "",
 					password: ""
 				})
+				history.push("/")
 			}
 		} catch (err) {
 			console.log(err)

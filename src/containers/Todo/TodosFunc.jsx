@@ -32,7 +32,7 @@ function TodosFunc() {
 			history.push("/login")
 		} else fetchTodos()
 
-		return fetchTodos()
+		return () => setTodos([])
 	}, [])
 
 	return (

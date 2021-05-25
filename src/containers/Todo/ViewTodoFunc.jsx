@@ -25,11 +25,11 @@ function ViewTodoFunc() {
 			})
 	}
 	useEffect(() => {
+		// to make the user login if not
 		if (userCredentials.token === undefined) {
 			history.push("/login")
-		}
-		fetchTodo()
-		return fetchTodo()
+		} else fetchTodo()
+		return () => setTodo("")
 	}, [])
 	const handleDone = async () => {
 		try {

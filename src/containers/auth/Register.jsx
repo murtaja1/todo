@@ -35,12 +35,12 @@ function Register() {
 				const res = await promise.json()
 				alert(res)
 			} else {
-				history.push("/login")
 				setUser({
 					username: "",
 					password1: "",
 					password2: ""
 				})
+				history.push("/login")
 			}
 		} catch (err) {
 			console.log(err)
