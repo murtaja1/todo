@@ -17,7 +17,7 @@ function Todos({ todos }) {
 							</Link>
 						</Grid>
 						<Grid item xs={12} align="center">
-							<small> صنعت في {new Date(todo.createdAt).toLocaleDateString()} </small>
+							<small> أضيفت في {new Date(todo.createdAt).toLocaleDateString()} </small>
 						</Grid>
 					</Grid>
 				))}
